@@ -1,0 +1,11 @@
+﻿@page "/events/{Id}"
+@using TimRailcarTrips.Client.Components
+
+<PageTitle>Events</PageTitle>
+
+
+<EventsTable Id="@Id"/>
+@code {
+    [Parameter]
+    public string Id { get; set; } = string.Empty;
+}

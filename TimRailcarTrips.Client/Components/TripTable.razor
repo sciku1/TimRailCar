@@ -1,0 +1,29 @@
+@using Blazorise.DataGrid
+@using TimRailcarTrips.Client.ApiClients.Models
+<DataGrid TItem="TripDto"
+          Data="@Trips"
+          Responsive
+          Striped
+          ShowPager="true"
+          PageSize="25"
+          Hoverable
+          Bordered>
+    <DataGridColumns>
+        <DataGridColumn TItem="TripDto" Field="@nameof(TripDto.EquipmentCode)" Caption="Equipment" />
+        <DataGridColumn TItem="TripDto" Field="@nameof(TripDto.Origin)" Caption="Origin" />
+        <DataGridColumn TItem="TripDto" Field="@nameof(TripDto.Destination)" Caption="Destination" />
+        <DataGridColumn TItem="TripDto" Field="@nameof(TripDto.StartDateTime)" Caption="Start" />
+        <DataGridColumn TItem="TripDto" Field="@nameof(TripDto.EndDateTime)" Caption="End" />
+        <DataGridColumn TItem="TripDto" Field="@nameof(TripDto.TotalTripHours)" Caption="Total Hours" />
+        <DataGridColumn TItem="TripDto" Field="@nameof(TripDto.Id)" Caption="View">
+            <DisplayTemplate>
+                @{
+                    var url = $"/events/{context.Value}";
+                }
+                <NavLink href="@url">View</NavLink>
+            </DisplayTemplate>
+        </DataGridColumn>
+
+    </DataGridColumns>
+</DataGrid>
+
