@@ -8,7 +8,19 @@ dotnet run --project TimRailcarTrips.Client
 ## Code Architecture
 The project largely follows a Clean Architecture + DDD "Lite" setup.
 
-# Considerations
+### Api 
+This project contains the actual API wiring, it interacts with the Domain & Infrastructure layers to accomplish tasks.
+
+### Client
+The blazor application that handles the UI components.
+
+### Domain
+THe core of the business logic, entities, and repository interfaces.
+
+### Infrastructure
+Leverages the Domain layer to build the persistence layer.
+
+# Considerations & Decisions
 
 ## Database choice
 SQLite as a driver was chosen strictly as a "flexibility" selection. The usage patterns 
@@ -30,6 +42,9 @@ timezones times that were invalid and move on. It also assumes that all the time
 
 ## Invalid trips
 Trips are considered invalid if they do not have an Origin and Destination (W > Z), and are discarded / not included 
+
+## Kiota
+Kiota was implemented to avoid wiring up DTOs in the Client side, and uses OpenAPI spec definitions to generate.
 
 ## UI/UX
 I levereaged Blazor.DataGrid to allow for better styling. Generally, a table component could have worked, however 
